@@ -1,5 +1,0 @@
-package com.desafio.tarefa.dto.request;
-
-public class TarefaRequestDTO {
-
-}

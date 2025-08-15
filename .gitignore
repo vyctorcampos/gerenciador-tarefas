@@ -1,0 +1,61 @@
+# Backend - Java/Spring Boot
+backend/tarefa/target/
+backend/tarefa/.metadata/
+backend/tarefa/.project
+backend/tarefa/.classpath
+backend/tarefa/.settings/
+backend/tarefa/.factorypath
+backend/tarefa/.git/
+backend/tarefa/.gitignore
+backend/tarefa/.gitattributes
+backend/tarefa/.java-version
+backend/tarefa/HELP.md
+backend/tarefa/mvnw
+backend/tarefa/mvnw.cmd
+backend/tarefa/.mvn/
+
+# Frontend - Angular
+frontend/gerenciador-tarefas/node_modules/
+frontend/gerenciador-tarefas/dist/
+frontend/gerenciador-tarefas/.angular/
+frontend/gerenciador-tarefas/.sass-cache/
+frontend/gerenciador-tarefas/connect.lock
+frontend/gerenciador-tarefas/coverage/
+frontend/gerenciador-tarefas/libpeerconnection.log
+frontend/gerenciador-tarefas/npm-debug.log
+frontend/gerenciador-tarefas/testem.log
+frontend/gerenciador-tarefas/typings/
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Docker
+.env
+docker.env
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Temporary files
+*.tmp
+*.temp

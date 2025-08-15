@@ -1,0 +1,6 @@
+1755288936356	Delete resource 'tarefa/start-docker.ps1'
+1755288938596	Delete resource 'tarefa/env.example'
+1755288941674	Delete resource 'tarefa/docker-compose.yml'
+1755288943403	Delete resource 'tarefa/docker.env'
+1755288945754	Delete resource 'tarefa/Dockerfile'
+1755288955533	Delete resource 'tarefa/init-scripts'

@@ -1,0 +1,21 @@
+package com.desafio.tarefa.repository;
+
+import java.util.Optional;
+import java.util.UUID;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.desafio.tarefa.model.Livro;
+import com.desafio.tarefa.model.Tarefa;
+
+@Repository
+public interface TarefaRepository extends JpaRepository<Tarefa, UUID> {
+
+    Optional<Tarefa> findByTitulo(String titulo);
+
+    boolean existsByTitulo(String titulo);
+
+    boolean existsByTituloAndIdNot(String titulo, UUID id);
+}
+

@@ -1,0 +1,5 @@
+package com.desafio.tarefa.dto.response;
+
+public class TarefaResponseDTO {
+
+}

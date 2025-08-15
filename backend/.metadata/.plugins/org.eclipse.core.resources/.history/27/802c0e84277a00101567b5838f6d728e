@@ -1,0 +1,53 @@
+package com.desafio.tarefa.mapper;
+
+import com.desafio.tarefa.dto.request.TarefaRequestDTO;
+import com.desafio.tarefa.dto.response.TarefaResponseDTO;
+import com.desafio.tarefa.model.Tarefa;
+import javax.annotation.processing.Generated;
+import org.springframework.stereotype.Component;
+
+@Generated(
+    value = "org.mapstruct.ap.MappingProcessor",
+    date = "2025-08-15T19:17:22-0300",
+    comments = "version: 1.5.5.Final, compiler: Eclipse JDT (IDE) 3.42.50.v20250729-0351, environment: Java 21.0.8 (Eclipse Adoptium)"
+)
+@Component
+public class TarefaMapperImpl implements TarefaMapper {
+
+    @Override
+    public Tarefa toEntity(TarefaRequestDTO dto) {
+        if ( dto == null ) {
+            return null;
+        }
+
+        Tarefa tarefa = new Tarefa();
+
+        tarefa.setTitulo( dto.getTitulo() );
+        tarefa.setDescricao( dto.getDescricao() );
+        tarefa.setResponsavel( dto.getResponsavel() );
+        tarefa.setPrioridade( dto.getPrioridade() );
+        tarefa.setDeadline( dto.getDeadline() );
+        tarefa.setSituacao( dto.getSituacao() );
+
+        return tarefa;
+    }
+
+    @Override
+    public TarefaResponseDTO toResponseDto(Tarefa entity) {
+        if ( entity == null ) {
+            return null;
+        }
+
+        TarefaResponseDTO tarefaResponseDTO = new TarefaResponseDTO();
+
+        tarefaResponseDTO.setId( entity.getId() );
+        tarefaResponseDTO.setTitulo( entity.getTitulo() );
+        tarefaResponseDTO.setDescricao( entity.getDescricao() );
+        tarefaResponseDTO.setResponsavel( entity.getResponsavel() );
+        tarefaResponseDTO.setPrioridade( entity.getPrioridade() );
+        tarefaResponseDTO.setDeadline( entity.getDeadline() );
+        tarefaResponseDTO.setSituacao( entity.getSituacao() );
+
+        return tarefaResponseDTO;
+    }
+}

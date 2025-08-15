@@ -1,0 +1,5 @@
+package com.desafio.tarefa.model;
+
+public class Tarefa {
+
+}

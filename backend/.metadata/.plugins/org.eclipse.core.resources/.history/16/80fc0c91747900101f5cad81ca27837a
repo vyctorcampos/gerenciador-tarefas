@@ -1,0 +1,87 @@
+ package com.desafio.tarefa.service.impl;
+
+import java.util.List;
+import java.util.UUID;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.desafio.tarefa.dto.request.TarefaRequestDTO;
+import com.desafio.tarefa.dto.response.TarefaResponseDTO;
+import com.desafio.tarefa.mapper.TarefaMapper;
+import com.desafio.tarefa.model.Tarefa;
+import com.desafio.tarefa.repository.TarefaRepository;
+import com.desafio.tarefa.service.TarefaService;
+import com.desafio.tarefa.validates.TarefaValidates;
+
+@Service
+@Transactional
+public class TarefaServiceImpl implements TarefaService {
+
+    private final TarefaRepository tarefaRepository;
+    private final TarefaMapper tarefaMapper;
+    private final TarefaValidates tarefaValidates;
+
+    // Injeção de dependências via construtor
+    public TarefaServiceImpl(TarefaRepository tarefaRepository,
+                             TarefaMapper tarefaMapper,
+                             TarefaValidates tarefaValidates) {
+        this.tarefaRepository = tarefaRepository;
+        this.tarefaMapper = tarefaMapper;
+        this.tarefaValidates = tarefaValidates;
+    }
+
+    @Override
+    public TarefaResponseDTO criarTarefa(TarefaRequestDTO tarefaRequestDto) {
+        // Mapeia o DTO de requisição para a entidade Tarefa
+        Tarefa tarefa = tarefaMapper.toEntity(tarefaRequestDto);
+
+        // Salva a nova tarefa no banco de dados
+        Tarefa tarefaSalva = tarefaRepository.save(tarefa);
+
+        // Mapeia a entidade salva para o DTO de resposta e retorna
+        return tarefaMapper.toResponseDto(tarefaSalva);
+    }
+
+    @Override
+    public TarefaResponseDTO atualizarTarefa(UUID id, TarefaRequestDTO tarefaRequestDTO) {
+        // Valida se a tarefa com o ID fornecido existe
+        Tarefa tarefaExistente = tarefaValidates.validarTarefaExistePorId(id);
+
+        // Atualiza os dados da tarefa existente com base no DTO de requisição
+        tarefaExistente.setTitulo(tarefaRequestDTO.getTitulo());
+        tarefaExistente.setDescricao(tarefaRequestDTO.getDescricao());
+        tarefaExistente.setResponsavel(tarefaRequestDTO.getResponsavel());
+        tarefaExistente.setPrioridade(tarefaRequestDTO.getPrioridade());
+        tarefaExistente.setDeadline(tarefaRequestDTO.getDeadline());
+        tarefaExistente.setSituacao(tarefaRequestDTO.getSituacao());
+        // O userId não é atualizado, pois a tarefa pertence a um usuário específico
+
+        // Salva as alterações
+        Tarefa tarefaAtualizada = tarefaRepository.save(tarefaExistente);
+
+        // Retorna o DTO de resposta da tarefa atualizada
+        return tarefaMapper.toResponseDto(tarefaAtualizada);
+    }
+
+    @Override
+    public void removerTarefa(UUID id) {
+        // Valida se a tarefa com o ID fornecido existe
+        Tarefa tarefaExistente = tarefaValidates.validarTarefaExistePorId(id);
+
+        // Remove a tarefa
+        tarefaRepository.deleteById(tarefaExistente.getId());
+    }
+	
+    @Override
+    @Transactional(readOnly = true)
+    public List<TarefaResponseDTO> listarTodos() {
+        // Busca todas as tarefas
+        List<Tarefa> tarefas = tarefaRepository.findAll();
+
+        // Mapeia a lista de entidades para uma lista de DTOs de resposta
+        return tarefas.stream()
+                .map(tarefaMapper::toResponseDto)
+                .toList();
+    }
+}

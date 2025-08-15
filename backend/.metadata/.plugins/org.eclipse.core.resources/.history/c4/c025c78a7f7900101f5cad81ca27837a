@@ -1,0 +1,16 @@
+package com.desafio.tarefa.mapper;
+
+import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
+
+
+import com.desafio.tarefa.model.Tarefa;
+
+@Mapper(componentModel = "spring")
+public interface TarefaMapper {
+
+    TarefaMapper INSTANCE = Mappers.getMapper(TarefaMapper.class);
+
+
+}
+

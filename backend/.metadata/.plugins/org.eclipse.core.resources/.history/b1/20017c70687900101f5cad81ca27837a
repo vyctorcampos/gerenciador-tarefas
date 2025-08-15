@@ -1,0 +1,5 @@
+                                                     package com.desafio.tarefa.service;
+
+public interface TarefaService {
+
+}

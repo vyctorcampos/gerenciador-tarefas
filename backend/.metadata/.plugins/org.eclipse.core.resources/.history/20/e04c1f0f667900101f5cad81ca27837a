@@ -1,0 +1,19 @@
+package com.desafio.tarefa.mapper;
+
+import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
+
+import com.desafio.tarefa.model.Tarefa;
+import com.exemplo.gerenciador.tarefas.dto.TarefaRequestDto;
+import com.exemplo.gerenciador.tarefas.dto.TarefaResponseDto;
+
+@Mapper(componentModel = "spring")
+public interface TarefaMapper {
+
+    TarefaMapper INSTANCE = Mappers.getMapper(TarefaMapper.class);
+
+    Tarefa toEntity(TarefaRequestDto dto);
+
+    TarefaResponseDto toResponseDto(Tarefa entity);
+}
+

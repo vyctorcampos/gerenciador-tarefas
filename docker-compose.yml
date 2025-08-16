@@ -36,7 +36,7 @@ services:
       JWT_SECRET: mt-secret-key-jwt-tarefas-2025
       SPRING_PROFILES_ACTIVE: docker
     ports:
-      - "8081:8080"
+      - "8080:8080"
     depends_on:
       postgres:
         condition: service_healthy
@@ -49,7 +49,7 @@ services:
       dockerfile: Dockerfile
     container_name: tarefas-frontend
     ports:
-      - "3001:4200"
+      - "3000:4200"
     depends_on:
       - backend
     networks:

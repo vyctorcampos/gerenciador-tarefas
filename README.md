@@ -1,41 +1,25 @@
 # Gerenciador de Tarefas
 
-Sistema completo de gerenciamento de tarefas com backend em Spring Boot e frontend em Angular, totalmente containerizado com Docker.
+Sistema completo de gerenciamento de tarefas.
 
-## 🚀 Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 ### Backend
 - **Java 21**
 - **Spring Boot 3.3.4**
-- **Spring Security** com JWT
+- **Spring Security**
 - **Spring Data JPA**
 - **PostgreSQL**
 - **Maven**
-- **MapStruct** para mapeamento de objetos
-- **Swagger/OpenAPI** para documentação
+- **Swagger/OpenAPI**
 
 ### Frontend
 - **Angular 17**
 - **TypeScript**
-- **Bootstrap** para estilização
-- **RxJS** para operações reativas
+- **Bootstrap**
+- **RxJS**
 
-### Infraestrutura
-- **Docker** e **Docker Compose**
-- **PostgreSQL** como banco de dados
-
-## 📋 Funcionalidades
-
-- ✅ **Autenticação JWT** com login e registro
-- ✅ **CRUD completo** de tarefas
-- ✅ **Filtros avançados** por título, descrição, responsável e situação
-- ✅ **Sistema de prioridades** (Alta, Média, Baixa)
-- ✅ **Controle de status** (Em andamento, Concluída)
-- ✅ **Interface responsiva** e moderna
-- ✅ **Validações** no backend e frontend
-- ✅ **Containerização completa** com Docker
-
-## 🏗️ Estrutura do Projeto
+## Estrutura do Projeto
 
 ```
 tarefas/
@@ -65,37 +49,17 @@ tarefas/
 └── README.md              # Este arquivo
 ```
 
-## 🚀 Como Executar
+### rodar projeto
 
-### Pré-requisitos
-- Docker e Docker Compose instalados
-- Portas 3001, 8081 e 5432 disponíveis
-
-### 1. Clone o repositório
-```bash
-git clone https://github.com/vyctorcampos/gerenciador-tarefas.git
-cd gerenciador-tarefas
-```
-
-### 2. Execute com Docker (Recomendado)
-```bash
-# Inicia todos os serviços
-docker-compose up -d
-
-# Para ver os logs
-docker-compose logs -f
-
-# Para parar todos os serviços
-docker-compose down
-```
+**docker-campose up --build -d** - na pasta rapiz do projeto
 
 ### 3. Acesse a aplicação
-- **Frontend**: http://localhost:3001
-- **Backend API**: http://localhost:8081
+- **Frontend**: http://localhost:3000
+- **Backend API**: http://localhost:8080
 - **Swagger**: http://localhost:8081/swagger-ui.html
 - **PostgreSQL**: localhost:5432
 
-## 🔐 Autenticação
+## Autenticação
 
 O sistema utiliza JWT para autenticação. Para acessar as funcionalidades:
 
@@ -103,7 +67,7 @@ O sistema utiliza JWT para autenticação. Para acessar as funcionalidades:
 2. **Faça login** em `/login`
 3. **Use o token JWT** retornado para as requisições
 
-## 📊 Endpoints da API
+## Endpoints da API
 
 ### Autenticação
 - `POST /api/auth/register` - Registro de usuário
@@ -136,91 +100,3 @@ O sistema utiliza JWT para autenticação. Para acessar as funcionalidades:
 - **Dependência**: Backend
 - **Hot Reload**: Configurado para desenvolvimento
 - **Volume**: Código fonte sincronizado
-
-## 🧪 Testes
-
-### Backend
-```bash
-# Dentro do container
-docker exec -it tarefas-backend mvn test
-
-# Ou localmente
-cd backend/tarefa
-mvn test
-```
-
-### Frontend
-```bash
-# Dentro do container
-docker exec -it tarefas-frontend ng test
-
-# Ou localmente
-cd frontend/gerenciador-tarefas
-npm test
-```
-
-## 🔧 Comandos Úteis
-
-```bash
-# Ver status dos serviços
-docker-compose ps
-
-# Ver logs de um serviço específico
-docker-compose logs backend
-docker-compose logs frontend
-docker-compose logs postgres
-
-# Rebuild de um serviço
-docker-compose up -d --build backend
-
-# Parar e remover tudo
-docker-compose down -v
-
-# Acessar container
-docker exec -it tarefas-backend bash
-docker exec -it tarefas-frontend bash
-docker exec -it tarefas-postgres psql -U postgres -d quadro_tarefa
-```
-
-## 🚨 Solução de Problemas
-
-### Porta já em uso
-Se você encontrar erro de porta já em uso, o Docker Compose está configurado para usar:
-- **Backend**: Porta 8081 (evita conflito com 8080)
-- **Frontend**: Porta 3001 (evita conflito com 3000)
-- **PostgreSQL**: Porta 5432
-
-### Verificar portas em uso
-```bash
-# Windows
-netstat -ano | findstr :8080
-netstat -ano | findstr :3000
-
-# Linux/Mac
-lsof -i :8080
-lsof -i :3000
-```
-
-## 📝 Contribuição
-
-1. Fork o projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. Push para a branch (`git push origin feature/AmazingFeature`)
-5. Abra um Pull Request
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
-## 👨‍💻 Autor
-
-**Vyctor Campos**
-- GitHub: [@vyctorcampos](https://github.com/vyctorcampos)
-
-## 🙏 Agradecimentos
-
-- Spring Boot Team
-- Angular Team
-- Docker Team
-- Comunidade open source
